@@ -1,5 +1,3 @@
-# import sys
-
 # def insert(x):
 #     # 배열(리스트) 끝에 새 값을 추가한다.
 #     heap.append(x)
@@ -12,14 +10,6 @@
 #     # 3번으로 돌아가서 같은 과정을 반복하되, 루트에 도달하면 종료한다.
 #     # 새 값이 부모의 값보다 크거나 같으면 종료한다
 # def remove():
-    
 
-# n = int(input())
-# heap = [0]
 
-# for _ in range(n):
-#     x = int(input())
-#     if x > 0:
-#         insert(x)
-#     else:
-#         remove()
+# 힙 라이브러리 사용하지 않고 구현하는 것 해봐야함.
