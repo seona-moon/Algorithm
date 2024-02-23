@@ -10,15 +10,19 @@ dx = [0,0,1,-1]
 dy = [1,-1,0,0]
 q = deque()
 
+# -1의 개수 세기
+dummy=0
 # 익은 토마토의 위치 저장
 for i in range(n):
     for j in range(m):
         if box[i][j]==1: 
             q.append([i,j,0])
             visited[i][j] = 1
+        if box[i][j]==-1:
+            dummy+=1
 
 # 이미 모든 토마토가 익어 있다면?
-if len(q)==n*m:
+if len(q)+dummy==n*m:
     print(0)
     exit()
     

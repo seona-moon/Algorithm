@@ -3,20 +3,18 @@
 N = int(input())
 a = [list(map(int, input().split())) for _ in range(N)]
 # 곱셈의 최소 횟수 행렬
-dp = [[0]*N for _ in range(N)]
+d = [[0]*N for _ in range(N)]
 
-for diagonal in range(1, N):  # dp[i][i]는 자기 자신의 행렬이기 때문에 값이 0
-    for i in range(0, N-diagonal):  # 대각선의 우측 한 칸씩 이동
-        j = i + diagonal  # 현재 대각선에서 몇 번째 원소인지
-        # 차이가 1밖에 나지 않는 칸 > 초기연산 (a[i]와 a[j] 연산횟수)
-        if diagonal == 1: 
-            dp[i][j] = a[i][0] * a[j][0] * a[j][1]
-            continue
+# 대각 행렬
+# l이 4이고, 2~6을 탐색할 때 (2,3:6),(2:3,4:6),(2:4,5:6) 중 가장 작은것을 (2:6)으로 선택
 
-        dp[i][j] = float('inf')
-        # 각 부분행렬의 곱셈 횟수 + 두 행렬의 곱셈 횟수
-        for k in range(i, j):  # k값으로 최적분할 찾기
-            # dp[i][k] + dp[k+1][j] -> 두 분할 중 어떤 것을 먼저 계산할 것인지!
-            dp[i][j] = min(dp[i][j], dp[i][k] + dp[k+1][j] + a[i][0] * a[k][1] * a[j][1])
-
-print(dp[0][N-1])
+for di in range(1, N):  # dp[i][i]는 자기 자신의 행렬이기 때문에 값이 0
+    for i in range(0, N-di):  # 대각선의 우측 한 칸씩 이동
+        j = i + di  # 현재 대각선에서 몇 번째 원소인지
+        if di==1: #첫번째 사선 : 초기값
+            d[i][j] = a[i][0]*a[i][1]*a[j][1]
+        else:
+            d[i][j] = float('inf')
+            for k in range(i,j): # i~j의 중단점 : i~k / k+1~j
+                d[i][j] = min(d[i][j], d[i][k]+ d[k+1][j] + a[i][0]*a[k][1]*a[j][1])
+print(d[0][N-1])
