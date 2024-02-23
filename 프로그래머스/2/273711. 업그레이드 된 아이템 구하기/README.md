@@ -1,6 +1,6 @@
-# [level 2] ROOT 아이템 구하기 - 273710 
+# [level 2] 업그레이드 된 아이템 구하기 - 273711 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/273710) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/273711) 
 
 ### 성능 요약
 
@@ -8,7 +8,7 @@
 
 ### 구분
 
-코딩테스트 연습 > IS NULL
+코딩테스트 연습 > SELECT
 
 ### 채점결과
 
@@ -16,16 +16,16 @@
 
 ### 제출 일자
 
-2024년 02월 23일 17:32:38
+2024년 02월 23일 16:19:02
 
 ### 문제 설명
 
 <p>어느 한 게임에서 사용되는 아이템들은 업그레이드가 가능합니다.<br>
 'ITEM_A'-&gt;'ITEM_B'와 같이 업그레이드가 가능할 때 <br>
-'ITEM_A'를 'ITEM_B'의 PARENT 아이템,<br>
+'ITEM_A'를 'ITEM_B' 의 PARENT 아이템,<br>
  PARENT 아이템이 없는 아이템을 ROOT 아이템이라고 합니다.</p>
 
-<p>예를 들어 'ITEM_A'-&gt;'ITEM_B'-&gt;'ITEM_C' 와 같이 업그레이드가 가능한 아이템이 있다면<br>
+<p>예를 들어 'ITEM_A'-&gt;'ITEM_B'-&gt;'ITEM_C'와 같이 업그레이드가 가능한 아이템이 있다면<br>
 'ITEM_C'의 PARENT 아이템은 'ITEM_B'<br>
 'ITEM_B'의 PARENT 아이템은 'ITEM_A'<br>
 ROOT 아이템은 'ITEM_A'가 됩니다.</p>
@@ -88,7 +88,7 @@ ROOT 아이템은 'ITEM_A'가 됩니다.</p>
 
 <h5>문제</h5>
 
-<p>ROOT 아이템을 찾아 아이템 ID(ITEM_ID), 아이템 명(ITEM_NAME)을 출력하는 SQL문을 작성해 주세요. 이때, 결과는 아이템 ID를 기준으로 오름차순 정렬해 주세요.</p>
+<p>아이템의 희귀도가 'RARE'인 아이템들의 모든 다음 업그레이드 아이템의 아이템 ID(ITEM_ID),  아이템 명(ITEM_NAME), 아이템의 희귀도(RARITY)를 출력하는 SQL 문을 작성해 주세요. 이때 결과는 아이템 ID를 기준으로 내림차순 정렬주세요.</p>
 
 <hr>
 
@@ -106,13 +106,13 @@ ROOT 아이템은 'ITEM_A'가 됩니다.</p>
         <tbody><tr>
 <td>0</td>
 <td>ITEM_A</td>
-<td>COMMON</td>
+<td>RARE</td>
 <td>10000</td>
 </tr>
 <tr>
 <td>1</td>
 <td>ITEM_B</td>
-<td>LEGEND</td>
+<td>RARE</td>
 <td>9000</td>
 </tr>
 <tr>
@@ -124,13 +124,13 @@ ROOT 아이템은 'ITEM_A'가 됩니다.</p>
 <tr>
 <td>3</td>
 <td>ITEM_D</td>
-<td>UNIQUE</td>
+<td>RARE</td>
 <td>10000</td>
 </tr>
 <tr>
 <td>4</td>
 <td>ITEM_E</td>
-<td>LEGEND</td>
+<td>RARE</td>
 <td>12000</td>
 </tr>
 </tbody>
@@ -156,28 +156,42 @@ ROOT 아이템은 'ITEM_A'가 됩니다.</p>
 </tr>
 <tr>
 <td>3</td>
-<td>NULL</td>
+<td>1</td>
 </tr>
 <tr>
 <td>4</td>
-<td>3</td>
+<td>1</td>
 </tr>
 </tbody>
       </table>
-<p>ROOT 아이템의 아이템 ID는 PARENT 아이템 ID(PARENT_ITEM_ID)가 NULL 인 0, 3 이므로 SQL문을 실행하면 다음과 같은 결과가 나와야 합니다.</p>
+<p>아이템의 희귀도가 'RARE'인 아이템은 'ITEM_A', 'ITEM_B', 'ITEM_D', 'ITEM_E' 입니다. <br>
+이 중 'ITEM_A' 는 'ITEM_B', 'ITEM_C' 로 업그레이드가 가능하며 'ITEM_B' 는 'ITEM_D' , 'ITEM_E' 로 업그레이드가 가능합니다. 'ITEM_D' 와 'ITEM_E'는 더 이상 업그레이드가 가능하지 않습니다. 따라서 결과는 다음과 같이 나와야 합니다.</p>
 <table class="table">
         <thead><tr>
 <th>ITEM_ID</th>
 <th>ITEM_NAME</th>
+<th>RARITY</th>
 </tr>
 </thead>
         <tbody><tr>
-<td>0</td>
-<td>ITEM_A</td>
+<td>4</td>
+<td>ITEM_E</td>
+<td>RARE</td>
 </tr>
 <tr>
 <td>3</td>
 <td>ITEM_D</td>
+<td>RARE</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ITEM_C</td>
+<td>LEGEND</td>
+</tr>
+<tr>
+<td>1</td>
+<td>ITEM_B</td>
+<td>RARE</td>
 </tr>
 </tbody>
       </table>

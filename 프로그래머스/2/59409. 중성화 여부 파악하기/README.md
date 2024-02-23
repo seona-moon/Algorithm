@@ -1,6 +1,6 @@
-# [level 2] 중복 제거하기 - 59408 
+# [level 2] 중성화 여부 파악하기 - 59409 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/59408) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/59409) 
 
 ### 성능 요약
 
@@ -8,7 +8,7 @@
 
 ### 구분
 
-코딩테스트 연습 > SUM， MAX， MIN
+코딩테스트 연습 > String， Date
 
 ### 채점결과
 
@@ -16,7 +16,7 @@ Empty
 
 ### 제출 일자
 
-2024년 02월 23일 17:01:40
+2024년 02월 23일 21:23:18
 
 ### 문제 설명
 
@@ -60,7 +60,7 @@ Empty
 </tr>
 </tbody>
       </table>
-<p>동물 보호소에 들어온 동물의 이름은 몇 개인지 조회하는 SQL 문을 작성해주세요. 이때 이름이 NULL인 경우는 집계하지 않으며 중복되는 이름은 하나로 칩니다. </p>
+<p>보호소의 동물이 중성화되었는지 아닌지 파악하려 합니다. 중성화된 동물은 <code>SEX_UPON_INTAKE</code> 컬럼에 'Neutered' 또는 'Spayed'라는 단어가 들어있습니다. 동물의 아이디와 이름, 중성화 여부를 아이디 순으로 조회하는 SQL문을 작성해주세요. 이때 중성화가 되어있다면 'O', 아니라면 'X'라고 표시해주세요.</p>
 
 <h5>예시</h5>
 
@@ -76,51 +76,62 @@ Empty
 </tr>
 </thead>
         <tbody><tr>
-<td>A562649</td>
+<td>A355753</td>
 <td>Dog</td>
-<td>2014-03-20 18:06:00</td>
-<td>Sick</td>
-<td>NULL</td>
-<td>Spayed Female</td>
-</tr>
-<tr>
-<td>A412626</td>
-<td>Dog</td>
-<td>2016-03-13 11:17:00</td>
+<td>2015-09-10 13:14:00</td>
 <td>Normal</td>
-<td>*Sam</td>
+<td>Elijah</td>
 <td>Neutered Male</td>
 </tr>
 <tr>
-<td>A563492</td>
-<td>Dog</td>
-<td>2014-10-24 14:45:00</td>
+<td>A373219</td>
+<td>Cat</td>
+<td>2014-07-29 11:43:00</td>
 <td>Normal</td>
-<td>*Sam</td>
-<td>Neutered Male</td>
+<td>Ella</td>
+<td>Spayed Female</td>
 </tr>
 <tr>
-<td>A513956</td>
+<td>A382192</td>
 <td>Dog</td>
-<td>2017-06-14 11:54:00</td>
+<td>2015-03-13 13:14:00</td>
 <td>Normal</td>
-<td>*Sweetie</td>
-<td>Spayed Female</td>
+<td>Maxwell 2</td>
+<td>Intact Male</td>
 </tr>
 </tbody>
       </table>
-<p>보호소에 들어온 동물의 이름은 NULL(없음), <code>*Sam</code>, <code>*Sam</code>, <code>*Sweetie</code>입니다. 이 중 NULL과 중복되는 이름을 고려하면, 보호소에 들어온 동물 이름의 수는 2입니다. 따라서 SQL문을 실행하면 다음과 같이 나와야 합니다.</p>
+<ul>
+<li>중성화한 동물: Elijah, Ella</li>
+<li>중성화하지 않은 동물: Maxwell 2</li>
+</ul>
+
+<p>따라서 SQL문을 실행하면 다음과 같이 나와야 합니다. </p>
 <table class="table">
         <thead><tr>
-<th>count</th>
+<th>ANIMAL_ID</th>
+<th>NAME</th>
+<th>중성화</th>
 </tr>
 </thead>
         <tbody><tr>
-<td>2</td>
+<td>A355753</td>
+<td>Elijah</td>
+<td>O</td>
+</tr>
+<tr>
+<td>A373219</td>
+<td>Ella</td>
+<td>O</td>
+</tr>
+<tr>
+<td>A382192</td>
+<td>Maxwell 2</td>
+<td>X</td>
 </tr>
 </tbody>
       </table>
-<p>※ 컬럼 이름(위 예제에서는 count)은 일치하지 않아도 됩니다.</p>
+<p>※ 컬럼 이름은 일치하지 않아도 됩니다.</p>
 
 <hr>
 
