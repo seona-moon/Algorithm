@@ -22,5 +22,6 @@ for k in range(1, n+1):
 for i in range(1, n+1):
     for j in range(1, n+1):
         if i!=j:
-            minimum = min(minimum, d[i][j]+d[j][i])
+            if d[i][j]==MAX or d[i][j]==MAX: continue
+            else: minimum = min(minimum, d[i][j]+d[j][i])
 print(minimum if minimum!=max else -1)
