@@ -1,3 +1,3 @@
 n = int(input())
-num = sum([int(n) for n in input()])
-print(num)
+num = input()
+print(sum(list(map(int, num))))
